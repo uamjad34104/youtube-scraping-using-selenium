@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
+import pandas as pd
 
 Youtube_Trending_URL = "https://www.youtube.com/feed/trending"
 
@@ -50,4 +51,14 @@ if __name__ == "__main__":
   print("Parsing top 10 videos")
   videos_data=[parse_video(video) for video in videos[:10]]
   #title , url , thumbnail_url , channal , views , uploaded , description
-  video = videos[0]
+  #print(videos_data)
+  print(videos_data[3])
+  ##saving to csv file 
+  videos_df=pd.DataFrame(videos_data)
+  print(videos_df)
+  ##save to csv 
+  videos_df.to_csv('trending.csv')
+  
+
+
+  
